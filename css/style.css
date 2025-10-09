@@ -78,6 +78,7 @@ body {
 .navigation {
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
 .navigation a {
@@ -86,10 +87,60 @@ body {
     font-size: 14px;
     letter-spacing: 1px;
     transition: color 0.3s;
+    position: relative;
 }
 
 .navigation a:hover {
     color: #ff6600;
+}
+
+/* Dropdown Menu Styles */
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 10px 0;
+    margin-top: 10px;
+    z-index: 1000;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f9f9f9;
+    color: #ff6600;
+    padding-left: 25px;
+}
+
+.nav-item > a::after {
+    content: ' ▾';
+    font-size: 10px;
+    margin-left: 5px;
 }
 
 /* Hero Section */
@@ -422,6 +473,196 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Profile Page Styles */
+.profile-section {
+    margin-top: 40px;
+}
+
+.profile-intro {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 60px;
+}
+
+.profile-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.profile-text h2 {
+    color: #ff6600;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.profile-title {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.philosophy-section,
+.qualifications-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.philosophy-section h2,
+.qualifications-section h2 {
+    color: #666;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.philosophy-content p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.qualifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.qualification-item {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.qualification-item h3 {
+    color: #ff6600;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.qualification-item ul {
+    list-style-position: inside;
+    line-height: 2;
+    color: #666;
+}
+
+.qualification-item ul li {
+    margin-bottom: 8px;
+}
+
+/* Contact Page Styles */
+.contact-section {
+    margin-top: 40px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.contact-item {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-item h2 {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.contact-item p {
+    color: #666;
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+.contact-item a {
+    color: #ff6600;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+.contact-form-section {
+    max-width: 600px;
+    margin: 60px auto;
+}
+
+.contact-form-section h2 {
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6600;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #ff6600;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #e55a00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Content Section Styles */
+.content-section {
+    margin-bottom: 60px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header .container {
@@ -468,6 +709,24 @@ body {
     
     .section-title {
         font-size: 24px;
+    }
+    
+    .profile-intro {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .profile-image {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .qualifications-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
 }
 
