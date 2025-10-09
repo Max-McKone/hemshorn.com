@@ -54,14 +54,18 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/startseite-hintergrund-optimiert.jpg') center center/cover;">
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/startseite-hintergrund-optimiert.jpg') center center/cover;">
         <div class="container">
-            <div class="carousel">
+            <div class="modern-carousel">
                 <div class="carousel-slide active">
-                    <div class="hero-content">
+                    <div class="hero-content first-slide">
                         <div class="hero-text">
-                            <h2>Veränderungen entstehen aus dem Zentrum heraus. Das Zentrum sind Sie!</h2>
-                            <p>Gewünschte Veränderungen zu bewirken braucht Klarheit, Perspektive und geeignete Mittel. Sie kommen sich selbst auf die Spur, entdecken was in Ihnen steckt, erweitern Ihren Blickwinkel, bauen Kompetenzen und Kapazitäten aus, definieren Ihre Werte und eröffnen neue Handlungsspielräume.</p>
+                            <h2 class="hero-title">Veränderungen entstehen aus dem Zentrum heraus.<br><span class="highlight">Das Zentrum sind Sie!</span></h2>
+                            <p class="hero-description">Gewünschte Veränderungen zu bewirken braucht Klarheit, Perspektive und geeignete Mittel. Sie kommen sich selbst auf die Spur, entdecken was in Ihnen steckt, erweitern Ihren Blickwinkel, bauen Kompetenzen und Kapazitäten aus, definieren Ihre Werte und eröffnen neue Handlungsspielräume.</p>
+                            <div class="hero-cta">
+                                <a href="leistungen.html" class="cta-button primary">Meine Leistungen</a>
+                                <a href="kontakt.html" class="cta-button secondary">Kontakt aufnehmen</a>
+                            </div>
                         </div>
                         <div class="hero-filler" style="opacity: 0;">
                             <!-- Hidden filler for layout -->
@@ -71,39 +75,55 @@
                 
                 <div class="carousel-slide">
                     <div class="hero-content">
-                        <div class="hero-text">
-                            <h2>Veränderung ist die einzige Konstante.</h2>
-                            <p>Das Potential zu positiver Veränderung zu erkennen schafft Raum für selbstbestimmte Entwicklung. Dieses Potential zu nutzen schafft positive Veränderung von innen heraus.</p>
+                        <div class="hero-image">
+                            <img src="../images/Coaching-opt.jpg" alt="Coaching & Training" class="hero-portrait">
                         </div>
-                        <div class="hero-filler">
-                            <img src="../images/placeholder.png" alt="Coaching & Training" class="filler-image" />
+                        <div class="hero-text">
+                            <h2 class="hero-title">Veränderung ist die einzige <span class="highlight">Konstante.</span></h2>
+                            <p class="hero-description">Das Potential zu positiver Veränderung zu erkennen schafft Raum für selbstbestimmte Entwicklung. Dieses Potential zu nutzen schafft positive Veränderung von innen heraus.</p>
+                            <div class="hero-cta">
+                                <a href="coaching.html" class="cta-button primary">Coaching entdecken</a>
+                                <a href="profil.html" class="cta-button secondary">Über mich</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="carousel-slide">
                     <div class="hero-content">
-                        <div class="hero-text">
-                            <h2>Auf diesem Weg bin ich Ihr Katalysator.</h2>
-                            <p>Entwicklungen, die Sie weiterbringen. Meine Aufgabe ist es mit analytischem Blick, Methodik und Feingespür zu hinterfragen, anzuregen, zu fokussieren.</p>
+                        <div class="hero-image">
+                            <img src="../images/Moderation-opt.jpg" alt="Moderation" class="hero-portrait">
                         </div>
-                        <div class="hero-filler">
-                            <img src="../images/placeholder.png" alt="Moderation" class="filler-image" />
+                        <div class="hero-text">
+                            <h2 class="hero-title">Auf diesem Weg bin ich Ihr <span class="highlight">Katalysator.</span></h2>
+                            <p class="hero-description">Entwicklungen, die Sie weiterbringen. Meine Aufgabe ist es mit analytischem Blick, Methodik und Feingespür zu hinterfragen, anzuregen, zu fokussieren.</p>
+                            <div class="hero-cta">
+                                <a href="training.html" class="cta-button primary">Training & Seminare</a>
+                                <a href="moderation.html" class="cta-button secondary">Moderation</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Carousel Navigation -->
-                <div class="carousel-nav">
-                    <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
-                    <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
+                <!-- Modern Carousel Navigation -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15,18 9,12 15,6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" onclick="changeSlide(1)" aria-label="Next slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9,18 15,12 9,6"></polyline>
+                        </svg>
+                    </button>
                 </div>
                 
-                <!-- Carousel Indicators -->
+                <!-- Modern Carousel Indicators -->
                 <div class="carousel-indicators">
-                    <span class="indicator active" onclick="currentSlide(1)"></span>
-                    <span class="indicator" onclick="currentSlide(2)"></span>
-                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator active" onclick="currentSlide(1)" aria-label="Go to slide 1"></span>
+                    <span class="indicator" onclick="currentSlide(2)" aria-label="Go to slide 2"></span>
+                    <span class="indicator" onclick="currentSlide(3)" aria-label="Go to slide 3"></span>
                 </div>
             </div>
         </div>

@@ -9,12 +9,26 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%;
+}
+
+/* Ensure all elements respect container width */
+* {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Top Contact Bar */
@@ -40,7 +54,7 @@ body {
 }
 
 .contact-info a:hover {
-    color: #ff6600;
+    color: #99adbf;
 }
 
 /* Header */
@@ -54,6 +68,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 20px;
 }
 
 
@@ -71,14 +87,16 @@ body {
 .logo-image {
     height: 60px;
     width: auto;
+    max-width: 200px; /* Prevent logo from being too wide */
     object-fit: contain;
 }
 
 
 .navigation {
     display: flex;
-    gap: 30px;
+    gap: 20px; /* Reduced gap */
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
 }
 
 .navigation a {
@@ -91,7 +109,7 @@ body {
 }
 
 .navigation a:hover {
-    color: #ff6600;
+    color: #99adbf;
 }
 
 /* Dropdown Menu Styles */
@@ -114,6 +132,7 @@ body {
     left: 0;
     background: white;
     min-width: 220px;
+    max-width: 300px; /* Prevent dropdown from being too wide */
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     border-radius: 4px;
     padding: 10px 0;
@@ -133,7 +152,7 @@ body {
 
 .dropdown-menu a:hover {
     background-color: #f9f9f9;
-    color: #ff6600;
+    color: #99adbf;
     padding-left: 25px;
 }
 
@@ -141,6 +160,321 @@ body {
     content: ' ▾';
     font-size: 10px;
     margin-left: 5px;
+}
+
+/* Modern Carousel Styles */
+.modern-carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 100%;
+}
+
+.carousel-slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    height: 500px; /* Fixed height instead of min-height */
+    padding: 60px 40px;
+    gap: 60px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* First slide: text on left, no image */
+.hero-content.first-slide {
+    justify-content: flex-start;
+}
+
+.hero-content.first-slide .hero-text {
+    flex: 1;
+    max-width: 800px;
+}
+
+.hero-text {
+    flex: 1;
+    color: white;
+    min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-title .highlight {
+    color: #99adbf;
+    position: relative;
+}
+
+.hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #99adbf, #a8b8c8);
+    border-radius: 2px;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    opacity: 0.95;
+    max-width: 600px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button.primary {
+    background: linear-gradient(135deg, #99adbf, #a8b8c8);
+    color: white;
+    box-shadow: 0 4px 15px rgba(153, 173, 191, 0.3);
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(153, 173, 191, 0.4);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.cta-button.secondary:hover {
+    background: white;
+    color: #333;
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    flex: 0 0 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.hero-portrait {
+    width: 100%;
+    max-width: 300px;
+    height: 350px; /* Reduced height to fit better */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.hero-portrait:hover {
+    transform: scale(1.02);
+}
+
+/* Modern Carousel Controls */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: all;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.carousel-btn:hover {
+    background: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+/* Modern Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.indicator.active {
+    background: #99adbf;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px rgba(153, 173, 191, 0.3);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+/* Responsive Design for Modern Carousel */
+@media (max-width: 1024px) {
+    .hero-content {
+        padding: 40px 30px;
+        gap: 40px;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 40px;
+        height: auto; /* Allow height to adjust on mobile */
+        min-height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 2.4rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    .hero-image {
+        display: none; /* Hide the extra image on mobile */
+    }
+    
+    .carousel-controls {
+        padding: 0 10px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 30px 15px;
+        gap: 30px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+    
+    /* Navigation responsive fixes */
+    .navigation {
+        gap: 15px;
+        font-size: 12px;
+    }
+    
+    .navigation a {
+        font-size: 12px;
+    }
+    
+    .logo-image {
+        height: 50px;
+        max-width: 150px;
+    }
+}
+
+/* Extra small screens - stack navigation */
+@media (max-width: 600px) {
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .navigation {
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .navigation a {
+        font-size: 11px;
+        padding: 5px;
+    }
 }
 
 /* Hero Section */
@@ -236,7 +570,7 @@ body {
 }
 
 .carousel-btn:hover {
-    color: #ff6600;
+    color: #99adbf;
 }
 
 .carousel-btn.prev {
@@ -267,7 +601,7 @@ body {
 }
 
 .indicator.active {
-    background-color: #ff6600;
+    background-color: #99adbf;
 }
 
 /* Main Content */
@@ -425,7 +759,7 @@ body {
 }
 
 .footer a:hover {
-    color: #ff6600;
+    color: #99adbf;
 }
 
 .back-to-top {
@@ -440,9 +774,9 @@ body {
 }
 
 .back-to-top:hover {
-    background-color: #ff6600;
+    background-color: #99adbf;
     color: white;
-    border-color: #ff6600;
+    border-color: #99adbf;
 }
 
 /* Video Container */
@@ -493,7 +827,7 @@ body {
 }
 
 .profile-text h2 {
-    color: #ff6600;
+    color: #99adbf;
     font-size: 32px;
     margin-bottom: 10px;
 }
@@ -539,7 +873,7 @@ body {
 }
 
 .qualification-item h3 {
-    color: #ff6600;
+    color: #99adbf;
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -586,7 +920,7 @@ body {
 }
 
 .contact-item a {
-    color: #ff6600;
+    color: #99adbf;
     text-decoration: none;
 }
 
@@ -637,12 +971,12 @@ body {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #ff6600;
+    border-color: #99adbf;
 }
 
 .submit-btn {
     width: 100%;
-    background-color: #ff6600;
+    background-color: #99adbf;
     color: white;
     padding: 15px;
     border: none;
