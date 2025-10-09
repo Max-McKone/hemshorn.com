@@ -11,8 +11,8 @@ collections:
     label: "Pages"
     files:
       - label: "German Homepage"
-        name: "index"
-        file: "index.html"
+        name: "german_index"
+        file: "de/index.html"
         fields:
           - label: "Hero Quote 1"
             name: "hero_quote_1"
@@ -51,8 +51,8 @@ collections:
             name: "contact_email"
             widget: "string"
       - label: "English Homepage"
-        name: "english"
-        file: "english.html"
+        name: "english_index"
+        file: "en/index.html"
         fields:
           - label: "Hero Quote 1"
             name: "hero_quote_1"
@@ -91,8 +91,8 @@ collections:
             name: "contact_email"
             widget: "string"
       - label: "Spanish Homepage"
-        name: "spanish"
-        file: "spanish.html"
+        name: "spanish_index"
+        file: "es/index.html"
         fields:
           - label: "Hero Quote 1"
             name: "hero_quote_1"
