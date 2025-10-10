@@ -425,8 +425,8 @@ img {
         text-align: center;
         padding: 40px 25px; /* Increased horizontal padding for mobile */
         gap: 40px;
-        height: auto; /* Allow height to adjust on mobile */
-        min-height: 400px;
+        height: 500px; /* Fixed height to match all slides */
+        min-height: 500px;
     }
     
     .hero-content.first-slide {
@@ -463,6 +463,7 @@ img {
     .hero-content {
         padding: 30px 20px; /* Increased padding for small screens */
         gap: 30px;
+        height: 500px; /* Keep fixed height on small screens too */
     }
     
     .hero-content.first-slide {
@@ -520,7 +521,7 @@ img {
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
+    transform: rotate(45deg) translate(7px, 7px);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -528,7 +529,7 @@ img {
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Mobile Menu Backdrop */
@@ -540,7 +541,7 @@ img {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 998;
+    z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -550,6 +551,19 @@ img {
     display: block;
     opacity: 1;
     pointer-events: all;
+}
+
+/* On mobile, make backdrop not cover the navigation area */
+@media (max-width: 768px) {
+    .menu-backdrop.active {
+        width: calc(100% - 280px); /* Don't cover the 280px wide navigation menu */
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-backdrop.active {
+        width: 0; /* On very small screens, navigation takes full width, so no backdrop needed */
+    }
 }
 
 /* Extra small screens - Mobile navigation */
@@ -576,19 +590,19 @@ img {
         position: fixed !important;
         top: 0 !important;
         right: -100% !important;
-        height: 100vh !important;
+        min-height: 100vh !important;
         width: 280px !important;
         background-color: white !important;
         flex-direction: column !important;
         justify-content: flex-start !important;
         align-items: stretch !important;
-        padding-top: 80px !important;
+        padding-top: 100px !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
         padding-bottom: 20px !important;
         box-shadow: -2px 0 10px rgba(0,0,0,0.1) !important;
         transition: right 0.3s ease !important;
-        z-index: 1000 !important;
+        z-index: 1001 !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
         display: flex !important;
@@ -612,15 +626,21 @@ img {
         color: #666;
         text-decoration: none;
         position: relative;
-        z-index: 1001;
+        z-index: 1002;
         background-color: white;
+    }
+    
+    /* Remove bottom border and padding for nav items with dropdowns */
+    .nav-item > a {
+        border-bottom: none;
+        padding-bottom: 10px;
     }
     
     .nav-item {
         width: 100%;
         display: block;
         position: relative;
-        z-index: 1001;
+        z-index: 1002;
         background-color: white;
     }
     
@@ -628,17 +648,18 @@ img {
         width: 100%;
         display: block;
         position: relative;
-        z-index: 1001;
+        z-index: 1002;
     }
     
     .dropdown-menu {
         position: static;
         box-shadow: none;
         background-color: #f9f9f9;
-        margin-top: 0;
+        margin-top: -5px;
+        padding-top: 0;
         display: none;
         transition: none;
-        z-index: 1002;
+        z-index: 1005;
         position: relative;
     }
     
@@ -650,10 +671,10 @@ img {
     }
     
     .dropdown-menu a {
-        padding: 12px 30px 12px 50px;
+        padding: 5px 30px 5px 50px;
         font-size: 14px;
         position: relative;
-        z-index: 1002;
+        z-index: 1006;
         background-color: #f9f9f9;
     }
 }
@@ -719,6 +740,11 @@ img {
         background-position: center center !important;
         background-repeat: no-repeat !important;
         background-attachment: local !important;
+    }
+    
+    /* Always show background on mobile, regardless of slide */
+    .hero[style*="background"]:not(.show-background)::before {
+        opacity: 0 !important;
     }
 }
 

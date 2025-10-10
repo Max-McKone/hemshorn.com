@@ -207,10 +207,13 @@ function initializeHamburgerMenu() {
             toggleMobileMenu();
         });
         
-        // Close menu when clicking backdrop
+        // Close menu when clicking backdrop (but not on navigation menu)
         if (menuBackdrop) {
-            menuBackdrop.addEventListener('click', function() {
-                closeMobileMenu();
+            menuBackdrop.addEventListener('click', function(e) {
+                // Only close if clicking on the backdrop itself, not on navigation elements
+                if (e.target === menuBackdrop) {
+                    closeMobileMenu();
+                }
             });
         }
         
