@@ -16,6 +16,7 @@ body {
     width: 100%;
     font-weight: 400;
     letter-spacing: 0.02em;
+    background-color: white; /* Ensure white background for padding around hero */
 }
 
 /* Ensure all elements respect container width */
@@ -26,6 +27,39 @@ body {
 img {
     max-width: 100%;
     height: auto;
+}
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-element {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-element.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.fade-in-element.delay-2 {
+    animation-delay: 0.3s;
+}
+
+.fade-in-element.delay-3 {
+    animation-delay: 0.5s;
+}
+
+.fade-in-element.delay-4 {
+    animation-delay: 0.7s;
 }
 
 .container {
@@ -41,6 +75,7 @@ img {
     background-color: #f5f5f5;
     padding: 8px 0;
     font-size: 14px;
+    margin-bottom: 15px; /* Space between contact bar and navbar */
 }
 
 .contact-info {
@@ -65,10 +100,25 @@ img {
 /* Header */
 .header {
     background-color: white;
-    padding: 20px 0;
+    padding: 15px 0; /* Reduced padding to compensate for larger logo */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative;
+    position: sticky;
+    top: 10px; /* Space from top when sticky */
     z-index: 100;
+    margin: 0 20px; /* White space on sides only */
+    border-radius: 20px; /* Rounded corners */
+    width: calc(100% - 40px); /* Account for margins */
+    transition: top 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scroll effect */
+}
+
+/* Enhanced shadow when scrolled */
+.header.scrolled {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Hide navbar when scrolling down */
+.header.hidden {
+    top: -150px; /* Move above viewport */
 }
 
 .header .container {
@@ -92,9 +142,9 @@ img {
 }
 
 .logo-image {
-    height: 60px;
+    height: 80px;
     width: auto;
-    max-width: 200px; /* Prevent logo from being too wide */
+    max-width: 250px; /* Prevent logo from being too wide */
     object-fit: contain;
 }
 
@@ -494,8 +544,8 @@ img {
     }
     
     .logo-image {
-        height: 50px;
-        max-width: 150px;
+        height: 60px;
+        max-width: 180px;
     }
 }
 
@@ -568,6 +618,19 @@ img {
 
 /* Extra small screens - Mobile navigation */
 @media (max-width: 768px) {
+    /* Reset top bar to full width on mobile */
+    .top-bar {
+        margin: 0;
+        width: 100%;
+    }
+    
+    /* Keep rounded navbar on mobile */
+    .header {
+        margin: 0 10px;
+        border-radius: 15px;
+        width: calc(100% - 20px);
+    }
+    
     .hamburger {
         display: flex;
         margin-left: auto;
@@ -693,11 +756,13 @@ img {
     padding: 20px 0;
     min-height: 250px;
     position: relative;
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% - 40px); /* Add space for white padding */
+    max-width: calc(100% - 40px);
+    margin: 20px; /* White space around hero */
     overflow: hidden; /* Prevent background image from overflowing */
     box-sizing: border-box;
     transition: background-image 0.6s ease-in-out;
+    border-radius: 20px; /* Rounded corners */
 }
 
 /* Desktop background image */
@@ -734,6 +799,13 @@ img {
 
 /* Mobile background image */
 @media (max-width: 768px) {
+    .hero {
+        width: calc(100% - 20px); /* Smaller margins on mobile */
+        max-width: calc(100% - 20px);
+        margin: 10px; /* Smaller white space on mobile */
+        border-radius: 15px; /* Slightly smaller radius on mobile */
+    }
+    
     .hero[style*="background"] {
         background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/startseite-hintergrund-optimiert-mobile.jpg') !important;
         background-size: cover !important;
@@ -1255,12 +1327,89 @@ img {
     margin-bottom: 60px;
 }
 
+/* Collapsible Section Styles */
+.collapsible-header {
+    cursor: pointer;
+    position: relative;
+    padding-right: 40px;
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.collapsible-header:hover {
+    color: #99adbf;
+}
+
+.collapse-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    transition: transform 0.3s ease;
+    color: #99adbf;
+}
+
+.collapsible-header.active .collapse-icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    opacity: 0;
+}
+
+.collapsible-content.active {
+    max-height: 3000px;
+    opacity: 1;
+    transition: max-height 0.5s ease-in, opacity 0.3s ease-in 0.1s;
+}
+
+.coaching-detailed-content {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+    margin: 20px 0 40px 0;
+}
+
+.coaching-detailed-content h4 {
+    color: #99adbf;
+    font-size: 22px;
+    margin: 30px 0 20px 0;
+    font-weight: 600;
+}
+
+.coaching-detailed-content h4:first-child {
+    margin-top: 0;
+}
+
+.coaching-detailed-content p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     /* Removed conflicting grid-based hero-content rule */
     
     .hero-text h2 {
         font-size: 28px;
+    }
+    
+    .coaching-detailed-content {
+        padding: 25px 20px;
+    }
+    
+    .coaching-detailed-content h4 {
+        font-size: 20px;
+    }
+    
+    .coaching-detailed-content p {
+        font-size: 15px;
     }
     
     .services-grid,

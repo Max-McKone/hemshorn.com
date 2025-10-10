@@ -5,6 +5,12 @@ const indicators = document.querySelectorAll('.indicator');
 let autoSlideInterval;
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in animations to elements
+    initializeFadeInAnimations();
+    
+    // Initialize language switcher with correct page mapping
+    initializeLanguageSwitcher();
+    
     // Initialize carousel
     if (slides.length > 0) {
         // Initialize hero background to show on first slide
@@ -87,13 +93,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Show/hide back to top button based on scroll position
+    // Also add scroll effect to sticky navbar with hide on scroll down
+    const header = document.querySelector('.header');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
     window.addEventListener('scroll', function() {
-        if (backToTop) {
-            if (window.scrollY > 300) {
-                backToTop.style.display = 'inline-block';
-            } else {
-                backToTop.style.display = 'none';
-            }
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                const currentScrollY = window.scrollY;
+                
+                // Back to top button
+                if (backToTop) {
+                    if (currentScrollY > 300) {
+                        backToTop.style.display = 'inline-block';
+                    } else {
+                        backToTop.style.display = 'none';
+                    }
+                }
+                
+                // Header scroll behavior
+                if (header) {
+                    // Add scrolled class for enhanced shadow
+                    if (currentScrollY > 10) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    
+                    // Hide/show based on scroll direction
+                    // Only apply hide behavior after scrolling past 100px
+                    if (currentScrollY > 100) {
+                        if (currentScrollY > lastScrollY) {
+                            // Scrolling down - hide navbar
+                            header.classList.add('hidden');
+                        } else {
+                            // Scrolling up - show navbar
+                            header.classList.remove('hidden');
+                        }
+                    } else {
+                        // Always show navbar near top of page
+                        header.classList.remove('hidden');
+                    }
+                }
+                
+                lastScrollY = currentScrollY;
+                ticking = false;
+            });
+            
+            ticking = true;
         }
     });
     
@@ -268,5 +316,138 @@ function closeMobileMenu() {
         navItems.forEach(item => {
             item.classList.remove('active');
         });
+    }
+}
+
+// Fade-in Animation Function
+function initializeFadeInAnimations() {
+    const topBar = document.querySelector('.top-bar');
+    const header = document.querySelector('.header');
+    const hero = document.querySelector('.hero');
+    const mainContent = document.querySelector('.main-content');
+    
+    // Add fade-in classes with staggered delays
+    if (topBar) {
+        topBar.classList.add('fade-in-element', 'delay-1');
+    }
+    
+    if (header) {
+        header.classList.add('fade-in-element', 'delay-2');
+    }
+    
+    if (hero) {
+        hero.classList.add('fade-in-element', 'delay-3');
+    }
+    
+    if (mainContent) {
+        mainContent.classList.add('fade-in-element', 'delay-4');
+    }
+}
+
+// Collapsible Section Toggle
+function toggleCollapsible(contentId) {
+    const content = document.getElementById(contentId);
+    const header = document.querySelector(`[onclick*="${contentId}"]`);
+    
+    if (content) {
+        content.classList.toggle('active');
+    }
+    
+    if (header) {
+        header.classList.toggle('active');
+    }
+}
+
+// Language Switcher with Page Mapping
+function initializeLanguageSwitcher() {
+    // Map of page names across languages
+    // Format: { de: 'german-page.html', en: 'english-page.html', es: 'spanish-page.html' }
+    const pageMapping = {
+        'index.html': { de: 'index.html', en: 'index.html', es: 'index.html' },
+        'coaching.html': { de: 'coaching.html', en: 'coaching.html', es: 'coaching.html' },
+        'kontakt.html': { de: 'kontakt.html', en: 'contact.html', es: 'contacto.html' },
+        'contact.html': { de: 'kontakt.html', en: 'contact.html', es: 'contacto.html' },
+        'contacto.html': { de: 'kontakt.html', en: 'contact.html', es: 'contacto.html' },
+        'profil.html': { de: 'profil.html', en: 'profile.html', es: 'perfil.html' },
+        'profile.html': { de: 'profil.html', en: 'profile.html', es: 'perfil.html' },
+        'perfil.html': { de: 'profil.html', en: 'profile.html', es: 'perfil.html' },
+        'leistungen.html': { de: 'leistungen.html', en: 'services.html', es: 'servicios.html' },
+        'services.html': { de: 'leistungen.html', en: 'services.html', es: 'servicios.html' },
+        'servicios.html': { de: 'leistungen.html', en: 'services.html', es: 'servicios.html' },
+        'training.html': { de: 'training.html', en: 'training.html', es: 'entrenamiento.html' },
+        'entrenamiento.html': { de: 'training.html', en: 'training.html', es: 'entrenamiento.html' },
+        'moderation.html': { de: 'moderation.html', en: 'moderation.html', es: 'moderacion.html' },
+        'moderacion.html': { de: 'moderation.html', en: 'moderation.html', es: 'moderacion.html' },
+        'personalentwicklung.html': { de: 'personalentwicklung.html', en: 'hr-development.html', es: 'desarrollo-rrhh.html' },
+        'hr-development.html': { de: 'personalentwicklung.html', en: 'hr-development.html', es: 'desarrollo-rrhh.html' },
+        'desarrollo-rrhh.html': { de: 'personalentwicklung.html', en: 'hr-development.html', es: 'desarrollo-rrhh.html' },
+        'better-up-life.html': { de: 'better-up-life.html', en: 'better-up-life.html', es: 'index.html' } // Spanish doesn't have this page
+    };
+    
+    // Get current page filename
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+    
+    // Detect current language from path
+    let currentLang = 'de'; // default
+    if (currentPath.includes('/en/')) {
+        currentLang = 'en';
+    } else if (currentPath.includes('/es/')) {
+        currentLang = 'es';
+    } else if (currentPath.includes('/de/')) {
+        currentLang = 'de';
+    }
+    
+    // Get the page mapping for current page
+    const mapping = pageMapping[currentPage];
+    
+    // Find language switcher dropdown more reliably
+    const navItems = document.querySelectorAll('.nav-item');
+    let languageSwitcher = null;
+    
+    navItems.forEach(function(item) {
+        const dropdown = item.querySelector('.dropdown-menu');
+        if (dropdown) {
+            const hasLangLinks = dropdown.querySelector('a[href*="/de/"]') || 
+                                dropdown.querySelector('a[href*="/en/"]') || 
+                                dropdown.querySelector('a[href*="/es/"]');
+            if (hasLangLinks) {
+                languageSwitcher = item;
+            }
+        }
+    });
+    
+    if (languageSwitcher && mapping) {
+        const dropdown = languageSwitcher.querySelector('.dropdown-menu');
+        const deLink = dropdown.querySelector('a[href*="/de/"]');
+        const enLink = dropdown.querySelector('a[href*="/en/"]');
+        const esLink = dropdown.querySelector('a[href*="/es/"]');
+        
+        // Determine the base path (../ if in language folder, or language folder name if at root)
+        const isInLangFolder = currentPath.includes('/de/') || currentPath.includes('/en/') || currentPath.includes('/es/');
+        const basePath = isInLangFolder ? '../' : '';
+        
+        if (deLink) {
+            deLink.href = basePath + 'de/' + mapping.de;
+        }
+        if (enLink) {
+            enLink.href = basePath + 'en/' + mapping.en;
+        }
+        if (esLink) {
+            esLink.href = basePath + 'es/' + mapping.es;
+        }
+    } else if (!mapping && languageSwitcher) {
+        // If no mapping found, default to index.html for safety
+        const dropdown = languageSwitcher.querySelector('.dropdown-menu');
+        const deLink = dropdown.querySelector('a[href*="/de/"]');
+        const enLink = dropdown.querySelector('a[href*="/en/"]');
+        const esLink = dropdown.querySelector('a[href*="/es/"]');
+        
+        const isInLangFolder = currentPath.includes('/de/') || currentPath.includes('/en/') || currentPath.includes('/es/');
+        const basePath = isInLangFolder ? '../' : '';
+        
+        if (deLink) deLink.href = basePath + 'de/index.html';
+        if (enLink) enLink.href = basePath + 'en/index.html';
+        if (esLink) esLink.href = basePath + 'es/index.html';
     }
 }
