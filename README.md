@@ -59,4 +59,4 @@ If you have a domain name, you can easily connect it to any of these hosting ser
 - The website is fully responsive and works on mobile devices
 - All three language versions (German, English, Spanish) are included
 - The design matches the original website's clean, professional aesthetic
-- Orange accent color (#ff6600) used for the logo accent and hover effects
+- Blue accent color (#99adbf) used for the logo accent and hover effects

@@ -7,6 +7,12 @@ let autoSlideInterval;
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize carousel
     if (slides.length > 0) {
+        // Initialize hero background to show on first slide
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.classList.add('show-background');
+        }
+        
         showSlide(currentSlideIndex);
         startAutoSlide();
         
@@ -17,6 +23,56 @@ document.addEventListener('DOMContentLoaded', function() {
             carousel.addEventListener('mouseleave', startAutoSlide);
         }
     }
+    
+    // Initialize hamburger menu
+    initializeHamburgerMenu();
+    
+    // Handle dropdown clicks (desktop and mobile)
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(function(item) {
+        const link = item.querySelector('a');
+        const hasDropdown = item.querySelector('.dropdown-menu');
+        
+        if (link && hasDropdown) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Close other dropdowns
+                navItems.forEach(function(otherItem) {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle this dropdown
+                item.classList.toggle('active');
+            });
+        }
+    });
+    
+    // Close dropdowns when clicking on dropdown sub-links
+    const allDropdownLinks = document.querySelectorAll('.dropdown-menu a');
+    allDropdownLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+            });
+        });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        const isNavItem = e.target.closest('.nav-item');
+        const isHamburger = e.target.closest('.hamburger');
+        const isNavigation = e.target.closest('.navigation');
+        
+        if (!isNavItem && !isHamburger && !isNavigation) {
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+            });
+        }
+    });
     
     // Smooth scroll for back to top
     const backToTop = document.querySelector('.back-to-top');
@@ -88,6 +144,16 @@ function showSlide(index) {
     if (indicators[index]) {
         indicators[index].classList.add('active');
     }
+    
+    // Toggle hero background visibility based on slide index
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        if (index === 0) {
+            heroSection.classList.add('show-background');
+        } else {
+            heroSection.classList.remove('show-background');
+        }
+    }
 }
 
 function changeSlide(direction) {
@@ -113,7 +179,7 @@ function startAutoSlide() {
     if (slides.length > 1) {
         autoSlideInterval = setInterval(function() {
             changeSlide(1);
-        }, 6000); // 6 seconds
+        }, 10000); // 10 seconds
     }
 }
 
@@ -126,4 +192,78 @@ function stopAutoSlide() {
 function restartAutoSlide() {
     stopAutoSlide();
     startAutoSlide();
+}
+
+// Hamburger Menu Functions
+function initializeHamburgerMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navigation = document.querySelector('.navigation');
+    const menuBackdrop = document.querySelector('.menu-backdrop');
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    if (hamburger && navigation) {
+        // Toggle menu
+        hamburger.addEventListener('click', function() {
+            toggleMobileMenu();
+        });
+        
+        // Close menu when clicking backdrop
+        if (menuBackdrop) {
+            menuBackdrop.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        }
+        
+        // Close menu when clicking on dropdown sub-links
+        const dropdownLinks = navigation.querySelectorAll('.dropdown-menu a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    closeMobileMenu();
+                }
+            });
+        });
+    }
+}
+
+function toggleMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navigation = document.querySelector('.navigation');
+    const menuBackdrop = document.querySelector('.menu-backdrop');
+    
+    if (hamburger && navigation) {
+        hamburger.classList.toggle('active');
+        navigation.classList.toggle('active');
+        
+        if (menuBackdrop) {
+            menuBackdrop.classList.toggle('active');
+        }
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = navigation.classList.contains('active') ? 'hidden' : '';
+    }
+}
+
+function closeMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navigation = document.querySelector('.navigation');
+    const menuBackdrop = document.querySelector('.menu-backdrop');
+    
+    if (hamburger && navigation) {
+        hamburger.classList.remove('active');
+        navigation.classList.remove('active');
+        
+        if (menuBackdrop) {
+            menuBackdrop.classList.remove('active');
+        }
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
+        
+        // Close any open dropdowns
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.classList.remove('active');
+        });
+    }
 }

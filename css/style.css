@@ -5,12 +5,17 @@
     box-sizing: border-box;
 }
 
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden; /* Prevent horizontal scrolling */
     width: 100%;
+    font-weight: 400;
+    letter-spacing: 0.02em;
 }
 
 /* Ensure all elements respect container width */
@@ -62,6 +67,8 @@ img {
     background-color: white;
     padding: 20px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 100;
 }
 
 .header .container {
@@ -103,7 +110,8 @@ img {
     color: #666;
     text-decoration: none;
     font-size: 14px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
     transition: color 0.3s;
     position: relative;
 }
@@ -117,10 +125,15 @@ img {
     position: relative;
 }
 
-.nav-item:hover .dropdown-menu {
+.nav-item > a {
+    cursor: pointer;
+}
+
+.nav-item.active .dropdown-menu {
     display: block;
     opacity: 1;
     visibility: visible;
+    transition-delay: 0s;
 }
 
 .dropdown-menu {
@@ -138,7 +151,7 @@ img {
     padding: 10px 0;
     margin-top: 10px;
     z-index: 1000;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .dropdown-menu a {
@@ -175,19 +188,30 @@ img {
 .carousel-slide {
     display: none;
     opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .carousel-slide.active {
     display: block;
     opacity: 1;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .hero-content {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 500px; /* Fixed height instead of min-height */
-    padding: 60px 40px;
+    padding: 60px 80px; /* Increased horizontal padding for more centering */
     gap: 60px;
     width: 100%;
     max-width: 100%;
@@ -196,12 +220,13 @@ img {
 
 /* First slide: text on left, no image */
 .hero-content.first-slide {
-    justify-content: flex-start;
+    justify-content: center;
+    padding-left: 80px; /* Extra padding from left edge */
 }
 
 .hero-content.first-slide .hero-text {
     flex: 1;
-    max-width: 800px;
+    max-width: 700px;
 }
 
 .hero-text {
@@ -212,10 +237,11 @@ img {
 
 .hero-title {
     font-size: 3.2rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
     margin-bottom: 24px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 0.02em;
 }
 
 .hero-title .highlight {
@@ -253,12 +279,13 @@ img {
     padding: 16px 32px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1rem;
     transition: all 0.3s ease;
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.02em;
 }
 
 .cta-button.primary {
@@ -379,8 +406,12 @@ img {
 /* Responsive Design for Modern Carousel */
 @media (max-width: 1024px) {
     .hero-content {
-        padding: 40px 30px;
+        padding: 40px 40px; /* Increased horizontal padding */
         gap: 40px;
+    }
+    
+    .hero-content.first-slide {
+        padding-left: 40px; /* Reduced extra padding on tablets */
     }
     
     .hero-title {
@@ -392,10 +423,14 @@ img {
     .hero-content {
         flex-direction: column;
         text-align: center;
-        padding: 40px 20px;
+        padding: 40px 25px; /* Increased horizontal padding for mobile */
         gap: 40px;
         height: auto; /* Allow height to adjust on mobile */
         min-height: 400px;
+    }
+    
+    .hero-content.first-slide {
+        padding-left: 25px; /* Reset extra padding on mobile */
     }
     
     .hero-title {
@@ -415,7 +450,7 @@ img {
     }
     
     .carousel-controls {
-        padding: 0 10px;
+        padding: 0 15px; /* Increased padding for better spacing */
     }
     
     .carousel-btn {
@@ -426,8 +461,12 @@ img {
 
 @media (max-width: 480px) {
     .hero-content {
-        padding: 30px 15px;
+        padding: 30px 20px; /* Increased padding for small screens */
         gap: 30px;
+    }
+    
+    .hero-content.first-slide {
+        padding-left: 20px; /* Reset extra padding on small screens */
     }
     
     .hero-title {
@@ -459,21 +498,170 @@ img {
     }
 }
 
-/* Extra small screens - stack navigation */
-@media (max-width: 600px) {
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1002;
+    background: none;
+    border: none;
+    position: relative;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #666;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Menu Backdrop */
+.menu-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.menu-backdrop.active {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Extra small screens - Mobile navigation */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        margin-left: auto;
+    }
+    
     .header .container {
-        flex-direction: column;
-        gap: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 20px;
+    }
+    
+    .logo {
+        flex: 0 0 auto;
     }
     
     .navigation {
-        gap: 10px;
-        justify-content: center;
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        height: 100vh !important;
+        width: 280px !important;
+        background-color: white !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        padding-top: 80px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 20px !important;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1) !important;
+        transition: right 0.3s ease !important;
+        z-index: 1000 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        display: flex !important;
+        gap: 0 !important;
+        flex-wrap: nowrap !important;
+    }
+    
+    .navigation.active {
+        right: 0 !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     .navigation a {
-        font-size: 11px;
-        padding: 5px;
+        padding: 15px 30px;
+        font-size: 16px;
+        border-bottom: 1px solid #f0f0f0;
+        width: 100%;
+        display: block;
+        color: #666;
+        text-decoration: none;
+        position: relative;
+        z-index: 1001;
+        background-color: white;
+    }
+    
+    .nav-item {
+        width: 100%;
+        display: block;
+        position: relative;
+        z-index: 1001;
+        background-color: white;
+    }
+    
+    .nav-item > a {
+        width: 100%;
+        display: block;
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: #f9f9f9;
+        margin-top: 0;
+        display: none;
+        transition: none;
+        z-index: 1002;
+        position: relative;
+    }
+    
+    .nav-item.active .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+    }
+    
+    .dropdown-menu a {
+        padding: 12px 30px 12px 50px;
+        font-size: 14px;
+        position: relative;
+        z-index: 1002;
+        background-color: #f9f9f9;
+    }
+}
+
+@media (max-width: 600px) {
+    .navigation {
+        width: 100%;
+        right: -100%;
     }
 }
 
@@ -484,6 +672,54 @@ img {
     padding: 20px 0;
     min-height: 250px;
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* Prevent background image from overflowing */
+    box-sizing: border-box;
+    transition: background-image 0.6s ease-in-out;
+}
+
+/* Desktop background image */
+.hero[style*="background"] {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: local !important;
+}
+
+/* Hide background image when not on first slide */
+.hero[style*="background"]:not(.show-background)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0d0f12;
+    z-index: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+/* Keep background visible on first slide */
+.hero.show-background::before {
+    opacity: 0;
+}
+
+/* Ensure carousel content is above the overlay */
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mobile background image */
+@media (max-width: 768px) {
+    .hero[style*="background"] {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/startseite-hintergrund-optimiert-mobile.jpg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: local !important;
+    }
 }
 
 /* Carousel Styles */
@@ -503,14 +739,7 @@ img {
     justify-content: center;
 }
 
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    padding: 30px 20px;
-    min-height: 280px;
-}
+/* Removed conflicting grid-based hero-content rule */
 
 .hero-text h2 {
     font-size: 28px;
@@ -613,9 +842,10 @@ img {
 .section-title {
     color: #666;
     font-size: 32px;
-    font-weight: normal;
+    font-weight: 500;
     margin-bottom: 40px;
     text-align: center;
+    letter-spacing: 0.02em;
 }
 
 .content-text {
@@ -659,7 +889,8 @@ img {
 .service-item h4 {
     color: #333;
     font-size: 18px;
-    font-weight: normal;
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 .mission-text {
@@ -698,8 +929,9 @@ img {
 .training-item h4 {
     color: #333;
     font-size: 20px;
-    font-weight: normal;
+    font-weight: 500;
     margin-bottom: 15px;
+    letter-spacing: 0.01em;
 }
 
 .training-item p {
@@ -987,7 +1219,7 @@ img {
 }
 
 .submit-btn:hover {
-    background-color: #e55a00;
+    background-color: #99adbf;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -999,30 +1231,7 @@ img {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .header .container {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .navigation {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        gap: 10px;
-    }
-
-    .navigation a {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-    
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
+    /* Removed conflicting grid-based hero-content rule */
     
     .hero-text h2 {
         font-size: 28px;
@@ -1037,8 +1246,16 @@ img {
     .contact-info {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         gap: 10px;
-        font-size: 13px;
+        font-size: 12px;
+    }
+    
+    .contact-info a {
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .section-title {
@@ -1080,4 +1297,18 @@ img {
     .hero-text h2 {
         font-size: 24px;
     }
+    
+    .contact-info {
+        gap: 8px;
+        font-size: 11px;
+    }
+    
+    .contact-info a {
+        font-size: 11px;
+    }
+    
+    .top-bar {
+        padding: 6px 0;
+    }
 }
+
