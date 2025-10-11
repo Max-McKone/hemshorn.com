@@ -307,7 +307,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 500px; /* Fixed height instead of min-height */
+    height: 550px; /* Fixed height instead of min-height */
     padding: 60px 80px; /* Increased horizontal padding for more centering */
     gap: 60px;
     width: 100%;
@@ -337,6 +337,8 @@ img {
     font-size: 3.2rem;
     font-weight: 600;
     line-height: 1.2;
+    margin-bottom: 24px;
+
     margin-bottom: 24px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     letter-spacing: 0.02em;
@@ -521,10 +523,10 @@ img {
     .hero-content {
         flex-direction: column !important;
         text-align: center;
-        padding: 40px 25px 80px 25px !important; /* Increased top padding to prevent title cutoff */
+        padding: 40px 25px 30px 25px !important; /* Increased top padding to prevent title cutoff */
         gap: 10px; /* Minimal gap to allow large separation between text and buttons */
-        height: 650px !important; /* Further increased height to prevent title cutoff */
-        min-height: 650px !important;
+        height: 550px !important; /* Reduced height for mobile */
+        min-height: 550px !important;
         justify-content: flex-end !important; /* Force content to bottom */
         align-items: center !important; /* Center content horizontally */
     }
@@ -538,7 +540,7 @@ img {
     
     .hero-title {
         font-size: 1.8rem; /* Smaller text for mobile */
-        margin-bottom: 350px; /* Large margin to push buttons to bottom while creating gap */
+        margin-bottom: 250px; /* Large margin to push buttons to bottom while creating gap */
         line-height: 1.3; /* Tighter line height */
     }
     
@@ -570,7 +572,7 @@ img {
     .hero-content {
         padding: 35px 20px 70px 20px !important; /* Increased top padding to prevent title cutoff */
         gap: 8px; /* Minimal gap to allow large separation between text and buttons */
-        height: 630px !important; /* Further increased height to prevent title cutoff */
+        height: 530px !important; /* Reduced height for small mobile */
         justify-content: flex-end !important; /* Force content to bottom */
         align-items: center !important; /* Center content horizontally */
     }
@@ -584,7 +586,7 @@ img {
     
     .hero-title {
         font-size: 1.5rem; /* Smaller text for very small screens */
-        margin-bottom: 320px; /* Large margin to push buttons to bottom while creating gap */
+        margin-bottom: 220px; /* Large margin to push buttons to bottom while creating gap */
         line-height: 1.3; /* Maintain tight line height */
     }
     
@@ -838,7 +840,7 @@ img {
     background-color: #333;
     color: white;
     padding: 20px 0;
-    min-height: 250px;
+    min-height: 300px;
     position: relative;
     width: calc(100% - 40px); /* Add space for white padding */
     max-width: calc(100% - 40px);
@@ -875,7 +877,7 @@ img {
         max-width: calc(100% - 20px);
         margin: 10px; /* Smaller white space on mobile */
         border-radius: 15px; /* Slightly smaller radius on mobile */
-        min-height: 650px; /* Further increased height to prevent title cutoff */
+        min-height: 550px; /* Reduced height for mobile */
     }
     
     .hero[style*="background"] {
@@ -917,26 +919,6 @@ img {
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 20px;
-}
-
-/* Hero Filler */
-.hero-filler {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.filler-image {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: contain;
-    border-radius: 8px;
 }
 
 /* Carousel Navigation */
