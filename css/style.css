@@ -29,7 +29,7 @@ img {
     height: auto;
 }
 
-/* Fade-in Animation */
+/* Scroll-triggered Animation */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -41,25 +41,47 @@ img {
     }
 }
 
-.fade-in-element {
+.scroll-fade-in {
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fade-in-element.delay-1 {
-    animation-delay: 0.1s;
+.scroll-fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.fade-in-element.delay-2 {
-    animation-delay: 0.3s;
+.scroll-fade-in.delay-1.animate {
+    transition-delay: 0.1s;
 }
 
-.fade-in-element.delay-3 {
-    animation-delay: 0.5s;
+.scroll-fade-in.delay-2.animate {
+    transition-delay: 0.2s;
 }
 
-.fade-in-element.delay-4 {
-    animation-delay: 0.7s;
+.scroll-fade-in.delay-3.animate {
+    transition-delay: 0.3s;
+}
+
+.scroll-fade-in.delay-4.animate {
+    transition-delay: 0.4s;
+}
+
+.scroll-fade-in.delay-5.animate {
+    transition-delay: 0.5s;
+}
+
+.scroll-fade-in.delay-6.animate {
+    transition-delay: 0.6s;
+}
+
+.scroll-fade-in.delay-7.animate {
+    transition-delay: 0.7s;
+}
+
+.scroll-fade-in.delay-8.animate {
+    transition-delay: 0.8s;
 }
 
 .container {
@@ -100,7 +122,7 @@ img {
 /* Header */
 .header {
     background-color: white;
-    padding: 15px 0; /* Reduced padding to compensate for larger logo */
+    padding: 20px 0; /* Increased padding to accommodate larger logo */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 10px; /* Space from top when sticky */
@@ -142,9 +164,9 @@ img {
 }
 
 .logo-image {
-    height: 80px;
+    height: 100px; /* Increased from 80px */
     width: auto;
-    max-width: 250px; /* Prevent logo from being too wide */
+    max-width: 300px; /* Increased from 250px to allow larger logo */
     object-fit: contain;
 }
 
@@ -292,6 +314,7 @@ img {
     max-width: 100%;
     box-sizing: border-box;
 }
+
 
 /* First slide: text on left, no image */
 .hero-content.first-slide {
@@ -449,7 +472,7 @@ img {
 /* Modern Carousel Indicators */
 .carousel-indicators {
     position: absolute;
-    bottom: 30px;
+    bottom: 25px; /* Standard position for central content layout */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -496,28 +519,37 @@ img {
 
 @media (max-width: 768px) {
     .hero-content {
-        flex-direction: column;
+        flex-direction: column !important;
         text-align: center;
-        padding: 40px 25px; /* Increased horizontal padding for mobile */
-        gap: 40px;
-        height: 500px; /* Fixed height to match all slides */
-        min-height: 500px;
+        padding: 20px 25px 80px 25px !important; /* Minimal top padding, maximum bottom padding */
+        gap: 20px; /* Reduced gap for tighter layout */
+        height: 600px !important; /* Increased height to accommodate better spacing */
+        min-height: 600px !important;
+        justify-content: flex-end !important; /* Force content to bottom */
+        align-items: center !important; /* Center content horizontally */
     }
     
     .hero-content.first-slide {
-        padding-left: 25px; /* Reset extra padding on mobile */
+        padding-left: 25px !important; /* Reset extra padding on mobile */
+        justify-content: flex-end !important; /* Force content to bottom */
+        align-items: center !important; /* Center content horizontally */
+        padding: 20px 25px 80px 25px !important; /* Consistent bottom padding */
     }
     
     .hero-title {
-        font-size: 2.4rem;
+        font-size: 1.8rem; /* Smaller text for mobile */
+        margin-bottom: 16px; /* Reduced margin */
+        line-height: 1.3; /* Tighter line height */
     }
     
     .hero-description {
-        font-size: 1.1rem;
+        display: none; /* Hide description text on mobile */
     }
     
     .hero-cta {
         justify-content: center;
+        margin-top: 40px; /* Add space between title and buttons */
+        margin-bottom: 0; /* Remove bottom margin for compact layout */
     }
     
     .hero-image {
@@ -536,26 +568,38 @@ img {
 
 @media (max-width: 480px) {
     .hero-content {
-        padding: 30px 20px; /* Increased padding for small screens */
-        gap: 30px;
-        height: 500px; /* Keep fixed height on small screens too */
+        padding: 15px 20px 70px 20px !important; /* Minimal top padding, maximum bottom padding */
+        gap: 18px; /* Reduced gap for tighter layout */
+        height: 580px !important; /* Slightly reduced height for small screens */
+        justify-content: flex-end !important; /* Force content to bottom */
+        align-items: center !important; /* Center content horizontally */
     }
     
     .hero-content.first-slide {
-        padding-left: 20px; /* Reset extra padding on small screens */
+        padding-left: 20px !important; /* Reset extra padding on small screens */
+        justify-content: flex-end !important; /* Force content to bottom */
+        align-items: center !important; /* Center content horizontally */
+        padding: 15px 20px 70px 20px !important; /* Consistent bottom padding */
     }
     
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.5rem; /* Smaller text for very small screens */
+        margin-bottom: 14px; /* Reduced margin */
+        line-height: 1.3; /* Maintain tight line height */
     }
     
     .hero-description {
-        font-size: 1rem;
+        display: none; /* Hide description text on small mobile */
+    }
+    
+    .hero-cta {
+        margin-top: 35px; /* Add space between title and buttons */
+        margin-bottom: 0; /* Remove bottom margin for compact layout */
     }
     
     .cta-button {
-        padding: 12px 24px;
-        font-size: 1rem;
+        padding: 8px 16px; /* Even smaller padding for very small screens */
+        font-size: 0.85rem; /* Smaller font size for very small screens */
     }
     
     /* Navigation responsive fixes */
@@ -569,8 +613,8 @@ img {
     }
     
     .logo-image {
-        height: 60px;
-        max-width: 180px;
+        height: 75px; /* Increased from 60px */
+        max-width: 220px; /* Increased from 180px */
     }
 }
 
@@ -844,6 +888,7 @@ img {
         max-width: calc(100% - 20px);
         margin: 10px; /* Smaller white space on mobile */
         border-radius: 15px; /* Slightly smaller radius on mobile */
+        min-height: 600px; /* Increased minimum height for mobile */
     }
     
     .hero[style*="background"] {
@@ -974,7 +1019,7 @@ img {
 /* Main Content */
 .main-content {
     padding: 80px 0;
-    background-color: white;
+    background: linear-gradient(180deg, white 0%, #fafafa 100%);
 }
 
 .section-title {
@@ -1000,6 +1045,10 @@ img {
 /* Services Section */
 .services-section {
     margin-bottom: 60px;
+    padding: 40px 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .services-section h3 {
@@ -1013,15 +1062,24 @@ img {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 50px;
     margin: 40px 0;
 }
 
 .service-item {
     text-align: center;
-    padding: 20px;
+    padding: 40px 30px; /* Increased vertical and horizontal padding */
     border: 1px solid #eee;
     border-radius: 20px;
+    background: white; /* Ensure white background */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transitions */
+}
+
+.service-item:hover {
+    transform: translateY(-4px); /* Subtle lift on hover */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
+    border-color: #99adbf; /* Accent border color on hover */
 }
 
 .service-item h4 {
@@ -1029,6 +1087,7 @@ img {
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 0.01em;
+    margin-bottom: 15px; /* Add space below heading */
 }
 
 .mission-text {
@@ -1153,12 +1212,15 @@ img {
 .video-container {
     text-align: center;
     margin: 40px 0;
-    padding: 20px 0;
+    padding: 30px;
     position: relative;
     width: 100%;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .video-container::before {
@@ -1169,12 +1231,14 @@ img {
 
 .video-container iframe {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 /* Profile Page Styles */
@@ -1464,6 +1528,17 @@ img {
     .training-grid,
     .offering-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Mobile service card adjustments */
+    .service-item {
+        padding: 30px 25px; /* Reduced padding for mobile */
+    }
+    
+    .service-item h4 {
+        font-size: 16px; /* Slightly smaller font for mobile */
+        margin-bottom: 12px;
     }
     
     /* Responsive formatting for content-text sections */
@@ -1516,6 +1591,26 @@ img {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+    
+    /* Mobile Video Container */
+    .video-container {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .video-container iframe {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+    }
+    
+    .services-section {
+        padding: 10px 20px;
+        margin: 20px 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1546,6 +1641,16 @@ img {
     
     .top-bar {
         padding: 6px 0;
+    }
+    
+    /* Extra small screen service card adjustments */
+    .service-item {
+        padding: 25px 20px; /* Further reduced padding for very small screens */
+    }
+    
+    .service-item h4 {
+        font-size: 15px; /* Smaller font for very small screens */
+        margin-bottom: 10px;
     }
 }
 

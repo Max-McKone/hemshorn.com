@@ -4,9 +4,22 @@ const slides = document.querySelectorAll('.carousel-slide');
 const indicators = document.querySelectorAll('.indicator');
 let autoSlideInterval;
 
+// Force scroll to top on page load/reload
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
     // Add fade-in animations to elements
     initializeFadeInAnimations();
+    
+    // Initialize scroll-triggered animations
+    initializeScrollAnimations();
     
     // Initialize language switcher with correct page mapping
     initializeLanguageSwitcher();
@@ -450,4 +463,28 @@ function initializeLanguageSwitcher() {
         if (enLink) enLink.href = basePath + 'en/index.html';
         if (esLink) esLink.href = basePath + 'es/index.html';
     }
+}
+
+// Initialize scroll-triggered animations
+function initializeScrollAnimations() {
+    const scrollElements = document.querySelectorAll('.scroll-fade-in');
+    
+    // Create intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                // Stop observing once animated
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1, // Trigger when 10% of element is visible
+        rootMargin: '0px 0px -50px 0px' // Start animation slightly before element is fully visible
+    });
+    
+    // Observe all scroll fade-in elements
+    scrollElements.forEach(element => {
+        observer.observe(element);
+    });
 }
