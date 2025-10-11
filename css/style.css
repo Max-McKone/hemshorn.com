@@ -517,14 +517,14 @@ img {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 875px) {
     .hero-content {
         flex-direction: column !important;
         text-align: center;
-        padding: 20px 25px 80px 25px !important; /* Minimal top padding, maximum bottom padding */
+        padding: 40px 25px 80px 25px !important; /* Increased top padding to prevent title cutoff */
         gap: 10px; /* Minimal gap to allow large separation between text and buttons */
-        height: 580px !important; /* Increased height to prevent text cutoff */
-        min-height: 580px !important;
+        height: 650px !important; /* Further increased height to prevent title cutoff */
+        min-height: 650px !important;
         justify-content: flex-end !important; /* Force content to bottom */
         align-items: center !important; /* Center content horizontally */
     }
@@ -568,9 +568,9 @@ img {
 
 @media (max-width: 480px) {
     .hero-content {
-        padding: 15px 20px 70px 20px !important; /* Minimal top padding, maximum bottom padding */
+        padding: 35px 20px 70px 20px !important; /* Increased top padding to prevent title cutoff */
         gap: 8px; /* Minimal gap to allow large separation between text and buttons */
-        height: 560px !important; /* Increased height to prevent text cutoff */
+        height: 630px !important; /* Further increased height to prevent title cutoff */
         justify-content: flex-end !important; /* Force content to bottom */
         align-items: center !important; /* Center content horizontally */
     }
@@ -579,7 +579,7 @@ img {
         padding-left: 20px !important; /* Reset extra padding on small screens */
         justify-content: flex-end !important; /* Force content to bottom */
         align-items: center !important; /* Center content horizontally */
-        padding: 15px 20px 70px 20px !important; /* Consistent bottom padding */
+        padding: 35px 20px 70px 20px !important; /* Increased top padding to prevent title cutoff */
     }
     
     .hero-title {
@@ -673,7 +673,7 @@ img {
 }
 
 /* On mobile, make backdrop not cover the navigation area */
-@media (max-width: 768px) {
+@media (max-width: 875px) {
     .menu-backdrop.active {
         width: calc(100% - 280px); /* Don't cover the 280px wide navigation menu */
     }
@@ -686,7 +686,7 @@ img {
 }
 
 /* Extra small screens - Mobile navigation */
-@media (max-width: 768px) {
+@media (max-width: 875px) {
     /* Reset top bar to full width on mobile */
     .top-bar {
         margin: 0 0 15px 0;
@@ -857,22 +857,9 @@ img {
     background-attachment: local !important;
 }
 
-/* Hide background image when not on first slide */
-.hero[style*="background"]:not(.show-background)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #0d0f12;
-    z-index: 0;
-    transition: opacity 0.6s ease-in-out;
-}
-
-/* Keep background visible on first slide */
-.hero.show-background::before {
-    opacity: 0;
+/* Always show background image on all slides */
+.hero[style*="background"]::before {
+    opacity: 0; /* Always keep background visible */
 }
 
 /* Ensure carousel content is above the overlay */
@@ -882,13 +869,13 @@ img {
 }
 
 /* Mobile background image */
-@media (max-width: 768px) {
+@media (max-width: 875px) {
     .hero {
         width: calc(100% - 20px); /* Smaller margins on mobile */
         max-width: calc(100% - 20px);
         margin: 10px; /* Smaller white space on mobile */
         border-radius: 15px; /* Slightly smaller radius on mobile */
-        min-height: 580px; /* Increased height to prevent text cutoff */
+        min-height: 650px; /* Further increased height to prevent title cutoff */
     }
     
     .hero[style*="background"] {
@@ -899,10 +886,6 @@ img {
         background-attachment: local !important;
     }
     
-    /* Always show background on mobile, regardless of slide */
-    .hero[style*="background"]:not(.show-background)::before {
-        opacity: 0 !important;
-    }
 }
 
 /* Carousel Styles */
@@ -1465,7 +1448,7 @@ img {
 }
 
 /* Responsive for Profile Sections */
-@media (max-width: 768px) {
+@media (max-width: 875px) {
     .experiences-grid {
         grid-template-columns: 1fr;
     }
@@ -1664,7 +1647,7 @@ img {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 875px) {
     /* Removed conflicting grid-based hero-content rule */
     
     .hero-text h2 {
@@ -1712,6 +1695,18 @@ img {
     
     .content-text div[style*="padding: 30px"] {
         padding: 20px !important;
+    }
+    
+    /* Portrait images mobile adjustments */
+    .content-text div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+        margin: 40px 0 !important;
+    }
+    
+    .content-text img[style*="height: 350px"] {
+        height: 280px !important;
+        max-width: 280px !important;
     }
     
     .contact-info {
@@ -1810,6 +1805,18 @@ img {
     .service-item h4 {
         font-size: 15px; /* Smaller font for very small screens */
         margin-bottom: 10px;
+    }
+    
+    /* Portrait images responsive adjustments */
+    .content-text div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        margin: 30px 0 !important;
+    }
+    
+    .content-text img[style*="height: 350px"] {
+        height: 250px !important;
+        max-width: 250px !important;
     }
 }
 
