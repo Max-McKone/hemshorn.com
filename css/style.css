@@ -75,7 +75,7 @@ img {
     background-color: #f5f5f5;
     padding: 8px 0;
     font-size: 14px;
-    margin-bottom: 15px; /* Space between contact bar and navbar */
+    margin-bottom: 30px; /* Space between contact bar and navbar */
 }
 
 .contact-info {
@@ -223,6 +223,31 @@ img {
     content: ' ▾';
     font-size: 10px;
     margin-left: 5px;
+}
+
+/* Language Selector */
+.language-selector {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.language-selector .lang-link {
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 2px 4px;
+    transition: color 0.2s ease;
+}
+
+.language-selector .lang-link:hover {
+    color: #99adbf;
+}
+
+.language-selector .lang-link.active {
+    color: #99adbf;
+    font-weight: 600;
 }
 
 /* Modern Carousel Styles */
@@ -620,7 +645,7 @@ img {
 @media (max-width: 768px) {
     /* Reset top bar to full width on mobile */
     .top-bar {
-        margin: 0;
+        margin: 0 0 15px 0;
         width: 100%;
     }
     
@@ -739,6 +764,21 @@ img {
         position: relative;
         z-index: 1006;
         background-color: #f9f9f9;
+    }
+    
+    /* Mobile Language Selector */
+    .language-selector {
+        flex-direction: row;
+        justify-content: center;
+        padding: 15px 30px;
+        border-top: 1px solid #f0f0f0;
+        width: 100%;
+        gap: 15px;
+    }
+    
+    .language-selector .lang-link {
+        padding: 4px 8px;
+        font-size: 14px;
     }
 }
 
@@ -981,7 +1021,7 @@ img {
     text-align: center;
     padding: 20px;
     border: 1px solid #eee;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .service-item h4 {
@@ -1053,7 +1093,7 @@ img {
     text-align: center;
     padding: 30px 20px;
     background-color: #f9f9f9;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .offering-item h4 {
@@ -1199,7 +1239,7 @@ img {
 .qualification-item {
     background: #f9f9f9;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .qualification-item h3 {
@@ -1233,7 +1273,7 @@ img {
 .contact-item {
     background: #f9f9f9;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: center;
 }
 
@@ -1272,7 +1312,7 @@ img {
 .contact-form {
     background: #f9f9f9;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .form-group {
@@ -1331,23 +1371,31 @@ img {
 .collapsible-header {
     cursor: pointer;
     position: relative;
-    padding-right: 40px;
-    transition: color 0.3s ease;
+    padding: 20px 60px 20px 30px;
+    transition: all 0.3s ease;
     user-select: none;
+    background: linear-gradient(135deg, #99adbf, #a8b8c8);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(153, 173, 191, 0.3);
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .collapsible-header:hover {
-    color: #99adbf;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(153, 173, 191, 0.4);
 }
 
 .collapse-icon {
     position: absolute;
-    right: 10px;
+    right: 25px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
     transition: transform 0.3s ease;
-    color: #99adbf;
+    color: white;
+    font-weight: bold;
 }
 
 .collapsible-header.active .collapse-icon {
@@ -1370,7 +1418,7 @@ img {
 .coaching-detailed-content {
     background: #f9f9f9;
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 20px;
     margin: 20px 0 40px 0;
 }
 
@@ -1416,6 +1464,20 @@ img {
     .training-grid,
     .offering-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Responsive formatting for content-text sections */
+    .content-text div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .content-text div[style*="padding: 25px"] {
+        padding: 20px !important;
+    }
+    
+    .content-text div[style*="padding: 30px"] {
+        padding: 20px !important;
     }
     
     .contact-info {
