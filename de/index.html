@@ -58,7 +58,7 @@
     <div class="menu-backdrop"></div>
 
     <!-- Hero Section -->
-    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/startseite-hintergrund-optimiert.jpg') center center; background-size: cover; background-repeat: no-repeat; background-attachment: local;">
+    <section class="hero hero-index" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/startseite-hintergrund-optimiert.jpg') center center; background-size: cover; background-repeat: no-repeat; background-attachment: local;">
         <div class="container">
             <div class="modern-carousel">
                 <div class="carousel-slide active">
@@ -71,9 +71,7 @@
                                 <a href="kontakt.html" class="cta-button secondary">Kontakt aufnehmen</a>
                             </div>
                         </div>
-                        <div class="hero-filler" style="opacity: 0;">
-                            <!-- Hidden filler for layout -->
-                        </div>
+
                     </div>
                 </div>
                 
@@ -139,42 +137,51 @@
             <h2 class="section-title scroll-fade-in">Veränderung ist die einzige Konstante.</h2>
             
             <div class="content-text scroll-fade-in delay-1">
-                <div style="text-align: center; margin-bottom: 30px;">
+                <div style="text-align: center; margin-bottom: 50px;">
                     <h3 style="color: #99adbf; font-size: 24px; margin-bottom: 20px;">Wird deshalb Alles besser?</h3>
                     <p style="font-size: 18px; color: #666; font-style: italic;">Nutzen Sie den Fluss um im Flow anzukommen?</p>
                 </div>
                 
-                <!-- Portrait Images Section -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 50px 0; align-items: center;">
-                    <div style="text-align: center;">
-                        <img src="../images/Coaching-opt.jpg" alt="Coaching & Training" style="width: 100%; max-width: 300px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
-                        <h4 style="color: #99adbf; margin-top: 20px; font-size: 18px; font-weight: 600;">Coaching & Training</h4>
+                <!-- Alternating Layout: Coaching Row (Image Left, Text Right) -->
+                <div class="alternating-row coaching-row">
+                    <div class="alternating-image">
+                        <img src="../images/Coaching-opt.jpg" alt="Coaching">
+                        <h4>Coaching</h4>
                     </div>
-                    <div style="text-align: center;">
-                        <img src="../images/Moderation-opt.jpg" alt="Moderation" style="width: 100%; max-width: 300px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
-                        <h4 style="color: #99adbf; margin-top: 20px; font-size: 18px; font-weight: 600;">Moderation</h4>
-                    </div>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
-                    <div style="background: #f9f9f9; padding: 25px; border-radius: 20px; text-align: center;">
-                        <h3 style="color: #333; font-weight: 600; margin-bottom: 15px; font-size: 20px;">Potential erkennen</h3>
-                        <p style="color: #666; font-size: 16px;">Das Potential zu positiver Veränderung zu erkennen schafft Raum für selbstbestimmte Entwicklung.</p>
-                    </div>
-                    <div style="background: #f9f9f9; padding: 25px; border-radius: 20px; text-align: center;">
-                        <h3 style="color: #333; font-weight: 600; margin-bottom: 15px; font-size: 20px;">Potential nutzen</h3>
-                        <p style="color: #666; font-size: 16px;">Dieses Potential zu nutzen schafft positive Veränderung von innen heraus.</p>
+                    <div class="alternating-content">
+                        <h3>Das Potential zu positiver Veränderung erkennen</h3>
+                        <p>Das Potential zu positiver Veränderung zu erkennen schafft Raum für selbstbestimmte Entwicklung. Dieses Potential zu nutzen schafft positive Veränderung von innen heraus.</p>
+                        <p>Nicht angestrengtes Verhalten, sondern ein erweiterter Blickwinkel und die daraus resultierende Haltung führen zu mehr Erfolg und Zufriedenheit.</p>
+                        <a href="coaching.html" class="service-link">Mehr über Coaching erfahren →</a>
                     </div>
                 </div>
                 
-                <div style="background: linear-gradient(135deg, #f9f9f9, #f0f0f0); padding: 30px; border-radius: 20px; margin-bottom: 30px;">
-                    <h3 style="color: #333; font-weight: 600; text-align: center; margin-bottom: 20px; font-size: 20px;">Der Weg zum Erfolg</h3>
-                    <p style="text-align: center; font-size: 16px; line-height: 1.7; color: #666;">Nicht angestrengtes Verhalten, sondern ein erweiterter Blickwinkel und die daraus resultierende Haltung führen zu mehr Erfolg und Zufriedenheit.</p>
-                    <p style="text-align: center; font-size: 16px; line-height: 1.7; margin-top: 15px; font-weight: 600; color: #99adbf;">Es gibt also Hoffnung und mehr als das: Einen klaren Weg innere und äußere Ziele zu erreichen.</p>
+                <!-- Training Row (Text Left, Image Right) -->
+                <div class="alternating-row training-row">
+                    <div class="alternating-content">
+                        <h3>Es gibt also Hoffnung und mehr als das</h3>
+                        <p>Es gibt also Hoffnung und mehr als das: Einen klaren Weg innere und äußere Ziele zu erreichen.</p>
+                        <p>Sie nutzen die Kraft der Bewegung und bewirken Entwicklungen, die Sie weiterbringen.</p>
+                        <a href="training.html" class="service-link">Mehr über Training erfahren →</a>
+                    </div>
+                    <div class="alternating-image">
+                        <img src="../images/Training-opt.jpg" alt="Training">
+                        <h4>Training</h4>
+                    </div>
                 </div>
                 
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <p style="font-size: 18px; color: #333; font-weight: 500;">Sie nutzen die Kraft der Bewegung und bewirken Entwicklungen, die Sie weiterbringen.</p>
+                <!-- Moderation Row (Image Left, Text Right) -->
+                <div class="alternating-row moderation-row">
+                    <div class="alternating-image">
+                        <img src="../images/Moderation-opt.jpg" alt="Moderation">
+                        <h4>Moderation</h4>
+                    </div>
+                    <div class="alternating-content">
+                        <h3>Veränderung ist die einzige Konstante</h3>
+                        <p>Veränderung ist die einzige Konstante. Auf diesem Weg bin ich Ihr Katalysator.</p>
+                        <p>Entwicklungen, die Sie weiterbringen. Meine Aufgabe ist es mit analytischem Blick, Methodik und Feingespür zu hinterfragen, anzuregen, zu fokussieren.</p>
+                        <a href="moderation.html" class="service-link">Mehr über Moderation erfahren →</a>
+                    </div>
                 </div>
             </div>
 
@@ -294,7 +301,7 @@
     <!-- Footer -->
     <footer id="kontakt" class="footer">
         <div class="container">
-            <p>Copyright by Nicola Hemshorn - Coaching | <a href="#impressum">Impressum</a></p>
+            <p>Copyright by Nicola Hemshorn - Coaching | <a href="impressum.html">Impressum</a></p>
             <a href="#" class="back-to-top">Go to Top</a>
         </div>
     </footer>
@@ -302,4 +309,5 @@
     <script src="../js/script.js"></script>
 </body>
 </html>
+
 
