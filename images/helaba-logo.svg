@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <rect width="300" height="100" fill="#ffffff"/>
+  <rect x="20" y="30" width="8" height="40" fill="#0066cc"/>
+  <rect x="32" y="30" width="8" height="40" fill="#0066cc"/>
+  <text x="60" y="60" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#0066cc" text-anchor="start">Helaba</text>
+</svg>
+
