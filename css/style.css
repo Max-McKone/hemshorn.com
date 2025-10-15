@@ -2229,14 +2229,51 @@ img {
     position: relative;
     overflow: hidden;
     padding: 20px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Fade effect on left and right edges */
+.logos-carousel-wrapper::before,
+.logos-carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.logos-carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #f8f9fa, transparent);
+}
+
+.logos-carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #f8f9fa, transparent);
 }
 
 .logos-carousel {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 60px;
-    animation: slideLogos 20s linear infinite;
+    animation: slideLogos 60s linear infinite;
+    width: fit-content;
+    will-change: transform;
+}
+
+/* Second row hidden on desktop */
+.logos-row-2 {
+    display: none;
+}
+
+/* Second row scrolls in reverse direction */
+.logos-row-2 {
+    animation-name: slideLogosReverse;
 }
 
 .logo-item {
@@ -2252,12 +2289,28 @@ img {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     opacity: 0.7;
+    text-decoration: none;
+    cursor: pointer;
+    /* Mobile touch optimization */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-.logo-item:hover {
+.logo-item:hover,
+.logo-item:active {
     transform: translateY(-5px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     opacity: 1;
+}
+
+/* Mobile touch feedback */
+@media (hover: none) and (pointer: coarse) {
+    .logo-item:active {
+        transform: translateY(-3px) scale(0.98);
+        transition: transform 0.1s ease;
+    }
 }
 
 .logo-item img {
@@ -2266,9 +2319,11 @@ img {
     object-fit: contain;
     filter: grayscale(100%);
     transition: filter 0.3s ease;
+    pointer-events: none;
 }
 
-.logo-item:hover img {
+.logo-item:hover img,
+.logo-item:active img {
     filter: grayscale(0%);
 }
 
@@ -2278,13 +2333,30 @@ img {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(calc(-50%));
     }
 }
 
-/* Pause animation on hover */
+/* Keyframes for reverse sliding animation */
+@keyframes slideLogosReverse {
+    0% {
+        transform: translateX(calc(-50%));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Pause animation on hover/touch */
 .logos-carousel:hover {
     animation-play-state: paused;
+}
+
+/* Ensure smooth animation on mobile */
+@media (prefers-reduced-motion: no-preference) {
+    .logos-carousel {
+        animation-timing-function: linear;
+    }
 }
 
 /* Responsive adjustments */
@@ -2298,8 +2370,20 @@ img {
         margin-bottom: 30px;
     }
     
+    /* Show both rows on tablet/mobile */
+    .logos-row-2 {
+        display: flex;
+    }
+    
+    /* Adjust fade width for tablet */
+    .logos-carousel-wrapper::before,
+    .logos-carousel-wrapper::after {
+        width: 40px;
+    }
+    
     .logos-carousel {
         gap: 40px;
+        animation-duration: 80s;
     }
     
     .logo-item {
@@ -2319,8 +2403,20 @@ img {
         margin-bottom: 20px;
     }
     
+    /* Show both rows on mobile */
+    .logos-row-2 {
+        display: flex;
+    }
+    
+    /* Adjust fade width for mobile */
+    .logos-carousel-wrapper::before,
+    .logos-carousel-wrapper::after {
+        width: 30px;
+    }
+    
     .logos-carousel {
         gap: 30px;
+        animation-duration: 100s;
     }
     
     .logo-item {

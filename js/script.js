@@ -488,3 +488,51 @@ function initializeScrollAnimations() {
         observer.observe(element);
     });
 }
+
+// Logo Carousel Mobile Touch Enhancement
+function initializeLogoCarousel() {
+    const logoCarousel = document.querySelector('.logos-carousel');
+    const logoItems = document.querySelectorAll('.logo-item');
+    
+    if (!logoCarousel || logoItems.length === 0) return;
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isPaused = false;
+    
+    // Handle touch start
+    logoCarousel.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        isPaused = true;
+        logoCarousel.style.animationPlayState = 'paused';
+    }, { passive: true });
+    
+    // Handle touch end
+    logoCarousel.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        
+        // Resume animation after a short delay
+        setTimeout(() => {
+            if (isPaused) {
+                logoCarousel.style.animationPlayState = 'running';
+                isPaused = false;
+            }
+        }, 300);
+    }, { passive: true });
+    
+    // Add touch feedback for individual logo items
+    logoItems.forEach(logoItem => {
+        logoItem.addEventListener('touchstart', function() {
+            this.style.transition = 'transform 0.1s ease, opacity 0.1s ease';
+        }, { passive: true });
+        
+        logoItem.addEventListener('touchend', function() {
+            this.style.transition = 'all 0.3s ease';
+        }, { passive: true });
+    });
+}
+
+// Initialize logo carousel when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLogoCarousel();
+});
