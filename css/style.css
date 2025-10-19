@@ -1137,7 +1137,7 @@ img {
     
     /* Only override background image for index pages on mobile */
     .hero.hero-index {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/startseite-hintergrund-optimiert-mobile.jpg') !important;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/startseite-hintergrund-optimiert Background Removed mobile.png') !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
