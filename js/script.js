@@ -391,9 +391,9 @@ function initializeLanguageSwitcher() {
         'entrenamiento.html': { de: 'training.html', en: 'training.html', es: 'entrenamiento.html' },
         'moderation.html': { de: 'moderation.html', en: 'moderation.html', es: 'moderacion.html' },
         'moderacion.html': { de: 'moderation.html', en: 'moderation.html', es: 'moderacion.html' },
-        'personalentwicklung.html': { de: 'personalentwicklung.html', en: 'hr-development.html', es: 'desarrollo-rrhh.html' },
-        'hr-development.html': { de: 'personalentwicklung.html', en: 'hr-development.html', es: 'desarrollo-rrhh.html' },
-        'desarrollo-rrhh.html': { de: 'personalentwicklung.html', en: 'hr-development.html', es: 'desarrollo-rrhh.html' },
+        'personalentwicklung.html': { de: 'personalentwicklung.html', en: 'personnel-development.html', es: 'desarrollo-rrhh.html' },
+        'personnel-development.html': { de: 'personalentwicklung.html', en: 'personnel-development.html', es: 'desarrollo-rrhh.html' },
+        'desarrollo-rrhh.html': { de: 'personalentwicklung.html', en: 'personnel-development.html', es: 'desarrollo-rrhh.html' },
         'better-up-life.html': { de: 'better-up-life.html', en: 'better-up-life.html', es: 'index.html' } // Spanish doesn't have this page
     };
     
