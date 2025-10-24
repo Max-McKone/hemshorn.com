@@ -1130,7 +1130,7 @@ img {
 
 /* Ensure background color shows through even with background image for index hero only */
 .hero.hero-index {
-    background: linear-gradient(rgba(153, 173, 191, 0.1), rgba(153, 173, 191, 0.1)), url('../images/startseite-hintergrund-optimiert Background Removed.png') center center, #808080 !important;
+    background: linear-gradient(rgba(153, 173, 191, 0.1), rgba(153, 173, 191, 0.1)), url('../images/startseite-hintergrund-optimiert Background Removed.png') center center, #b0b0b0 !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: local !important;
@@ -1159,7 +1159,7 @@ img {
     
     /* Only override background image for index pages on mobile */
     .hero.hero-index {
-        background: linear-gradient(rgba(153, 173, 191, 0.1), rgba(153, 173, 191, 0.1)), url('../images/startseite-hintergrund-optimiert Background Removed mobile.png') center center, #808080 !important;
+        background: linear-gradient(rgba(153, 173, 191, 0.1), rgba(153, 173, 191, 0.1)), url('../images/startseite-hintergrund-optimiert Background Removed mobile.png') center center, #b0b0b0 !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
