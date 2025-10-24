@@ -215,7 +215,7 @@ img {
     position: absolute;
     top: 100%;
     left: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(255, 255, 255, 0.95);
     min-width: 220px;
     max-width: 300px; /* Prevent dropdown from being too wide */
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -224,20 +224,21 @@ img {
     margin-top: 10px;
     z-index: 1000;
     transition: opacity 0.2s ease, visibility 0.2s ease;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .dropdown-menu a {
     display: block;
     padding: 10px 20px;
-    color: white;
+    color: #333;
     text-decoration: none;
     font-size: 14px;
     transition: all 0.3s;
 }
 
 .dropdown-menu a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
+    background-color: rgba(153, 173, 191, 0.1);
+    color: #99adbf;
     padding-left: 25px;
 }
 
@@ -1054,13 +1055,14 @@ img {
     .dropdown-menu {
         position: static;
         box-shadow: none;
-        background-color: rgba(0, 0, 0, 0.85);
+        background-color: rgba(255, 255, 255, 0.95);
         margin-top: -5px;
         padding-top: 0;
         display: none;
         transition: none;
         z-index: 1005;
         position: relative;
+        border: 1px solid rgba(0,0,0,0.1);
     }
     
     .nav-item.active .dropdown-menu {
@@ -1075,8 +1077,8 @@ img {
         font-size: 14px;
         position: relative;
         z-index: 1006;
-        background-color: rgba(0, 0, 0, 0.85);
-        color: white;
+        background-color: rgba(255, 255, 255, 0.95);
+        color: #333;
     }
     
     /* Mobile Language Selector */
