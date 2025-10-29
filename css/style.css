@@ -1902,8 +1902,20 @@ img {
     font-size: 15px !important;
 }
 
+/* Profile hero image - desktop shows nicola.jpg */
+.profile-hero-image {
+    content: url('../images/nicola.jpg');
+}
+
 /* Responsive for Profile Sections */
 @media (max-width: 875px) {
+
+    /* Profile hero image - mobile shows nicola-mobile.png */
+    .profile-hero-image {
+        content: url('../images/nicola-mobile.png');
+        max-width: 350px !important;
+    }
+
     .experiences-grid {
         grid-template-columns: 1fr;
     }
