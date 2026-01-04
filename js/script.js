@@ -206,14 +206,11 @@ function showSlide(index) {
         indicators[index].classList.add('active');
     }
     
-    // Toggle hero background visibility based on slide index
-    const heroSection = document.querySelector('.hero');
+    // Toggle hero background classes based on slide index
+    const heroSection = document.querySelector('.hero-index');
     if (heroSection) {
-        if (index === 0) {
-            heroSection.classList.add('show-background');
-        } else {
-            heroSection.classList.remove('show-background');
-        }
+        heroSection.classList.remove('slide-0', 'slide-1', 'slide-2');
+        heroSection.classList.add(`slide-${index}`);
     }
 }
 
