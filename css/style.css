@@ -1177,7 +1177,7 @@ img {
 
 /* Ensure background color shows through even with background image for index hero only */
 .hero.hero-index {
-    background: url('../images/startseite-hintergrund-optimiert Background Removed.png') center center, linear-gradient(180deg, #455c6c, #455c6c) !important;
+    background: url('../images/startseite-nicola-desktop.png') center center, linear-gradient(180deg, #455c6c, #455c6c) !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: local !important;
@@ -1211,7 +1211,7 @@ img {
 
     /* Only override background image for index pages on mobile */
     .hero.hero-index {
-        background: url('../images/startseite-hintergrund-optimiert Background Removed mobile.png') center center, linear-gradient(180deg, #455c6c, #455c6c) !important;
+        background: url('../images/startseite-nicola.png') center center, linear-gradient(180deg, #455c6c, #455c6c) !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
