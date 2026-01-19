@@ -1468,7 +1468,7 @@ img {
     font-weight: 600;
     margin-bottom: 60px;
     margin-top: 40px;
-    text-align: left;
+    text-align: center;
     letter-spacing: 0.01em;
 }
 
@@ -1478,7 +1478,7 @@ img {
     font-size: 42px;
     font-weight: 600;
     margin-bottom: 40px;
-    text-align: left;
+    text-align: center;
     letter-spacing: 0.02em;
 }
 
@@ -1706,6 +1706,11 @@ img {
     margin-top: 40px;
 }
 
+.profile-section h2,
+.profile-section h3 {
+    text-align: center !important;
+}
+
 .profile-intro {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -1744,7 +1749,7 @@ img {
     color: #666;
     font-size: 28px;
     margin-bottom: 30px;
-    text-align: left;
+    text-align: center;
 }
 
 .philosophy-content p {
@@ -1770,6 +1775,7 @@ img {
     color: #99adbf;
     font-size: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .qualification-item ul {
@@ -1792,7 +1798,7 @@ img {
     color: #666;
     font-size: 28px;
     margin-bottom: 30px;
-    text-align: left;
+    text-align: center;
 }
 
 .values-content {
@@ -1810,7 +1816,7 @@ img {
 .values-content p:first-child {
     font-size: 24px;
     color: #99adbf;
-    text-align: left;
+    text-align: center !important;
     margin-bottom: 30px;
 }
 
@@ -1823,7 +1829,7 @@ img {
     color: #666;
     font-size: 28px;
     margin-bottom: 40px;
-    text-align: left;
+    text-align: center;
 }
 
 .experiences-grid {
@@ -1863,12 +1869,31 @@ img {
     color: #666;
     font-size: 28px;
     margin-bottom: 30px;
-    text-align: left;
+    text-align: center;
 }
 
 .vita-content {
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+    max-width: 1000px;
     margin: 0 auto;
+}
+
+@media (max-width: 875px) {
+    .vita-content {
+        grid-template-columns: 1fr;
+    }
+
+    .vita-content div {
+        text-align: center !important;
+    }
+
+    .vita-content img {
+        margin: 20px auto 0 !important;
+        display: block;
+    }
 }
 
 .vita-content ul {
@@ -1895,7 +1920,7 @@ img {
     color: #666;
     font-size: 28px;
     margin-bottom: 40px;
-    text-align: left;
+    text-align: center;
 }
 
 .testimonials-content {
