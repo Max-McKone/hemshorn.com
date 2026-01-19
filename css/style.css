@@ -453,10 +453,12 @@ img {
 }
 
 .cta-button.secondary {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.15);
     color: white;
     border-color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .cta-button.secondary:hover {
@@ -1295,7 +1297,7 @@ img {
 }
 
 .carousel-btn {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.15);
     color: white;
     border: none;
     width: 50px;
@@ -1303,12 +1305,21 @@ img {
     font-size: 32px;
     cursor: pointer;
     pointer-events: all;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
     font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .carousel-btn:hover {
-    color: #99adbf;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
 }
 
 .carousel-btn.prev {
